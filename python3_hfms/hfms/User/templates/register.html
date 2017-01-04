@@ -1,0 +1,83 @@
+<!DOCTYPE  html>
+	<head>
+		<title>Register</title>
+		<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/json2/20160511/json2.min.js"></script>
+		<script type="text/javascript">
+			var  PWError={
+				"NotMatch":{
+					"error_code":1,
+					"error_message":"Not Match"
+				},
+				"NotEnoughLenght":{
+					"error_code":2,
+					"error_message":"Leghth is not enough"
+				},
+				"NotEnoughComplexity":{
+					"error_code":3,
+					"error_message":"Password is not enough Complexity"
+				}
+			}
+			function Register(){
+				var v = PWVaild()
+				if(v.vaild){
+					var  userInfo = {
+						"userID":$.trim($("#userID").val()),
+						"userName":$.trim($("#userName").val()),
+						"newPWD":$("#newPWD").val(),
+						"confirmPWD":$("#confirmPWD").val()
+					}
+					$.ajax({
+						url:"/user/register/insert/",
+						type:"POST",
+						datatype:"json",
+						/*data:{userInfo:JSON.stringify(userInfo)},*/
+						data:{userInfo:JSON.stringify(userInfo),csrfmiddlewaretoken: '{{ csrf_token }}' },
+						success:function(res){
+							var re = JSON.parse(res)
+							if(re.state == false)
+								alert(re["message"])
+							else{
+								eval(re["message"])
+							}
+						}
+					})
+				}
+				else{
+					alert(v.reason.error_message)
+				}
+			}
+
+			function PWVaild()
+			{
+				var pw = $.trim($("#newPWD").val())
+				var cpw = $.trim($("#confirmPWD").val())
+				if(pw != cpw)
+					return {vaild:false,reason:PWError["NotMatch"]}
+				if(pw.length < 6)
+					return {vaild:false,reason:PWError["NotEnoughLenght"]}
+				var pattern = /\d+/
+				var pattern1 =/\w+/
+				var pattern2 =/[~!@#$%^&*().]+/
+				var re = new RegExp(pattern)
+				var re1 = new RegExp(pattern1)
+				var re2= new RegExp(pattern2)
+				if(!(re.test(pw) && re1.test(pw) && re2.test(pw) ))
+					return {vaild:false,reason:PWError["NotEnoughComplexity"]}
+				return {vaild:true}
+
+			}
+		</script>
+	</head>
+	<body>
+		<div style="width:200px;height:350px;background-color:#F8F8F8;margin:50px auto">
+			<span>UseID</span><input type="text"  id="userID"/><br/>
+			<span>UserName</span><input type="text" id="userName"/><br/>
+			<span>Password</span><input type="password" id="newPWD"><br/>
+			<span>ConfirmPassword</span><input type="password" id="confirmPWD"><br/><br/>
+			<input type="button" value="Register" onclick="Register()" />
+		</div>
+
+
+	</body>
+</html>

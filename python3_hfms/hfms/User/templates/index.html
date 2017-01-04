@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		function Login(){
+			$.ajax({
+				url:"/login/?uid="+$("#uid").val()+"&pwd="+$("#pwd").val(),
+				type:"GET",
+				success:function(res){
+					eval(res)
+				}
+			})
+		}
+
+	</script>
+</head>
+<body>
+	<div style="margin-top:300px;margin-left:400px;width:600px;height:150px;background-color:#F8F8F8">
+		<div style="padding-top:38px">
+			<span>UID</span><input type="text" id="uid"/>
+			<span>PW</span><input type="password" id="pwd"/>
+			<input type="button" value="LOGIN" onclick="Login()">
+			<br/>
+			<br/>
+		</div>
+		<a style="float:right;text-decoration:underline;cursor:pointer;" href="/user/register">registered accounts</a>
+	</div>
+</body>
+</html>
