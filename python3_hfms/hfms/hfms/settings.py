@@ -25,7 +25,7 @@ SECRET_KEY = '_bcr@epx_3ilt3w)7^lwar4jo39=ba1zh11n0$72$&k^x-1@o='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'User',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,12 @@ WSGI_APPLICATION = 'hfms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '/var/lib/mysql/hfms_db',
+	'USER': 'zdy',
+	'PASSWORD': 'Zdy123!@#',
+	'HOST': 'localhost',
+	'PORT': '3306',
     }
 }
 

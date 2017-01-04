@@ -4,32 +4,8 @@
 	<meta charset="UTF-8">
 	<title>home</title>
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript">
-		setInterval(ShowTime,10000)
-
-		function ShowTime(){
-			$.ajax({
-				url:"/home/active/",
-				type:"POST",
-				async:false,
-				datatype:"json",
-				data:{csrfmiddlewaretoken: '{{ csrf_token }}' },
-				success:function(res){
-					if(res == "true"){
-						s = new Date().toLocaleTimeString()
-						$("#time").text(s)
-					}
-					else{
-						alert("login has pass")
-						window.location.href="/"
-					}
-				}
-			})
-		}
-	</script>
 </head>
 <body>
  	<h2>Home Page</h2>
- 	<h3 id="time"></h3>
-</body>
+ </body>
 </html>
