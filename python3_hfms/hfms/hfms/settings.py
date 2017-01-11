@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'User',
+    'sys_module_user',
 ]
 
 MIDDLEWARE = [
@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'hfms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '/var/lib/mysql/hfms_db',
+        'NAME': 'hfms_db',
 	'USER': 'zdy',
 	'PASSWORD': 'Zdy123!@#',
-	'HOST': 'localhost',
-	'PORT': '3306',
+	'HOST': '',
+	'PORT': '',
     }
 }
 
