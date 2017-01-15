@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>index</title>
-	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/jquery.min.js"></script>
 	<script type="text/javascript">
 		function Login(){
 			$.ajax({
-				url:"/login/?uid="+$("#uid").val()+"&pwd="+$("#pwd").val(),
+				url:"/sys/login?uid="+$("#uid").val()+"&pwd="+$("#pwd").val(),
 				type:"GET",
 				success:function(res){
 					eval(res)

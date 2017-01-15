@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>home</title>
+	<link rel="stylesheet" type="text/css" href="/static/easyui_themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyui_themes/icon.css">
+	<script type="text/javascript" src="/static/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="/static/home.js"></script>
+	<style type="text/css">
+		.linkmenu {font-weight:bold;background-color:rgba(227, 245, 196, 0.93);margin-top:2px;font-size:18px;
+			margin-left:10px;cursor:pointer;}
+		.linkmenu:hover{background-color:#FFE48D;}
+	</style>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:10px">
+		<h2>主页</h2>
+	</div>
+	<div data-options="region:'west',split:true" style="width:150px;padding:0px;">
+		<div class="easyui-accordion" data-options="fit:true,border:false">
+				<div title="系统管理" style="padding:3px">
+					<div class="linkmenu" onclick="menumanager.Openurl('菜单管理','/home/pagemanage')">
+						菜单管理
+					</div>
+				</div>
+		</div>
+	</div>
+	<!--<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>-->
+	<div data-options="region:'center'">
+		<div id="maintab" class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+			
+		</div>
+	</div>
+</body>
+</html>

@@ -13,9 +13,6 @@ import hashlib
 def index(request):
 	return render(request,'index.html')
 
-def home(request):
-	return render(request,'home.html')
-
 def login(request):
 	uid = request.GET["uid"]
 	pwd = request.GET["pwd"]
@@ -25,7 +22,7 @@ def login(request):
 		# request.session["user"] = users[0].id
 		# request.session["loginDateTime"] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
 		request.session.set_expiry(120) 
-		sc = "window.location.href = '/home/'"
+		sc = "window.location.href = '/home/home'"
 	else:
 		sc  ="alert('login failed')"
 	return HttpResponse(sc)
