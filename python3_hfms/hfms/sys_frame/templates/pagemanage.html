@@ -5,16 +5,20 @@
 	<link ref="stylesheet" type="text/css" href="/static/easyui_themes/icon.css">
 	<script type="text/javascript" src="/static/jquery.min.js"></script>
 	<script type="text/javascript" src="/static/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="/static/jquery.ztree.core.min.js"></script>
 	<script type="text/javascript" src="/static/pagemanage.js"></script>
     </head>	
     <body>
-	<div style="width:300px; height:auto; float:left; display:inline;border:1px solid">
-		<ul id='menutree' class='ztree'></ul>
-	</div>
-	<div style="width:300px; height:auto; float:left; display:inline;border:1px solid;margin-left:30px">
-		<p id='menutitle'>空</p></br>
-		<table></table>
+	<div>
+		<table id="dg" style="width:500px;height:auto;">
+			<thead>
+				<tr>
+					<th field="rowid" width="50">序号</th>	
+					<th field="account" width="50">账号</th>	
+					<th field="cm" width="50">账户余额</th>	
+					<th field="lud" width="50">最后统计时间</th>	
+ 				</tr>
+			</thead>
+		</table>
 	</div>
     </body>
 </html>
